@@ -1,5 +1,5 @@
 variable "dns_zone_id" {
-  type = string
+  type = number
 }
 
 variable "rewrite_rules" {

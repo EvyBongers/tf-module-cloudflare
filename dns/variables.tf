@@ -1,5 +1,5 @@
-variable "dns_zone" {
-  type = string
+variable "dns_zone_id" {
+  type = number
 }
 
 variable "dns_records" {
