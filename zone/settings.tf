@@ -11,22 +11,28 @@ resource "cloudflare_zone_settings_override" "settings" {
     ssl             = var.zone_settings.ssl
     tls_1_3         = var.zone_settings.tls_1_3
     min_tls_version = var.zone_settings.min_tls_version
-    security_header {
-      enabled            = var.zone_settings.security_header.enabled
-      include_subdomains = var.zone_settings.security_header.include_subdomains
-      max_age            = var.zone_settings.security_header.max_age
-      nosniff            = var.zone_settings.security_header.nosniff
-      preload            = var.zone_settings.security_header.preload
+    dynamic "security_header" {
+      for_each = toset(var.zone_settings.security_header == null ? [] : [var.zone_settings.security_header])
+      content {
+        enabled            = security_header.value.enabled
+        include_subdomains = security_header.value.include_subdomains
+        max_age            = security_header.value.max_age
+        nosniff            = security_header.value.nosniff
+        preload            = security_header.value.preload
+      }
     }
 
     http2 = var.zone_settings.http2
     http3 = var.zone_settings.http3
 
     brotli = var.zone_settings.brotli
-    minify {
-      css  = var.zone_settings.minify.css
-      js   = var.zone_settings.minify.js
-      html = var.zone_settings.minify.html
+    dynamic "minify" {
+      for_each = toset(var.zone_settings.minify == null ? [] : [var.zone_settings.minify])
+      content {
+        css  = minify.value.css
+        js   = minify.value.js
+        html = minify.value.html
+      }
     }
   }
 }

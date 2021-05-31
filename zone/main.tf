@@ -6,6 +6,7 @@ terraform {
       version = "~> 2.20.0"
     }
   }
+  experiments = [module_variable_optional_attrs]
 }
 
 resource "cloudflare_zone" "dns_zone" {

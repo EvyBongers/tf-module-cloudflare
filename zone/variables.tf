@@ -4,35 +4,35 @@ variable "dns_zone" {
 
 variable "zone_settings" {
   type = object({
-    development_mode = string,
+    development_mode = optional(string),
 
-    ipv6                  = string,
-    true_client_ip_header = string,
+    ipv6                  = optional(string),
+    true_client_ip_header = optional(string),
 
-    always_use_https         = string,
-    automatic_https_rewrites = string,
-    opportunistic_encryption = string,
+    always_use_https         = optional(string),
+    automatic_https_rewrites = optional(string),
+    opportunistic_encryption = optional(string),
 
-    ssl             = string,
-    security_level  = string,
-    tls_1_3         = string,
-    min_tls_version = string,
-    security_header = object({
-      enabled            = bool,
-      include_subdomains = bool,
-      max_age            = number,
-      nosniff            = bool,
-      preload            = bool,
-    }),
+    ssl             = optional(string),
+    security_level  = optional(string),
+    tls_1_3         = optional(string),
+    min_tls_version = optional(string),
+    security_header = optional(object({
+      enabled            = optional(bool),
+      include_subdomains = optional(bool),
+      max_age            = optional(number),
+      nosniff            = optional(bool),
+      preload            = optional(bool),
+    })),
 
-    http2 = string,
-    http3 = string,
+    http2 = optional(string),
+    http3 = optional(string),
 
-    brotli = string,
-    minify = object({
+    brotli = optional(string),
+    minify = optional(object({
       css  = string,
       js   = string,
       html = string,
-    }),
+    })),
   })
 }
