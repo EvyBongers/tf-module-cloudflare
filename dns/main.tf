@@ -15,6 +15,7 @@ resource "cloudflare_record" "a_records" {
   zone_id = var.dns_zone_id
 
   name    = each.value.name
+  data    = {}
   type    = each.value.type
   value   = each.value.value
   proxied = each.value.proxied
@@ -26,6 +27,7 @@ resource "cloudflare_record" "aaaa_records" {
   zone_id = var.dns_zone_id
 
   name    = each.value.name
+  data    = {}
   type    = each.value.type
   value   = each.value.value
   proxied = each.value.proxied
@@ -37,6 +39,7 @@ resource "cloudflare_record" "cname_records" {
   zone_id = var.dns_zone_id
 
   name    = each.value.name
+  data    = {}
   type    = each.value.type
   value   = each.value.value
   proxied = each.value.proxied
@@ -48,6 +51,7 @@ resource "cloudflare_record" "mx_records" {
   zone_id = var.dns_zone_id
 
   name     = each.value.name
+  data     = {}
   type     = each.value.type
   value    = each.value.value
   priority = each.value.priority
@@ -59,6 +63,7 @@ resource "cloudflare_record" "sshfp_records" {
   zone_id = var.dns_zone_id
 
   name  = each.value.name
+  data  = {}
   type  = each.value.type
   value = each.value.value
 }
@@ -69,6 +74,7 @@ resource "cloudflare_record" "txt_records" {
   zone_id = var.dns_zone_id
 
   name  = each.value.name
+  data  = {}
   type  = each.value.type
   value = each.value.value
 }
