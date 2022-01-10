@@ -35,4 +35,5 @@ variable "zone_settings" {
       html = string,
     })),
   })
+  default = {}
 }
