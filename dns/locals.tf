@@ -20,7 +20,7 @@ locals {
     if record.type == "MX"
   }
   sshfp_records = {
-    for record in local.records : "${record.type}:${record.name}:${record.value}" => record
+    for record in local.records : "${record.type}:${record.name}:${base64encode(jsonencode(record.data))}" => record
     if record.type == "SSHFP"
   }
   txt_records = {

@@ -58,9 +58,9 @@ resource "cloudflare_record" "sshfp_records" {
 
   zone_id = var.dns_zone_id
 
-  name  = each.value.name
-  type  = each.value.type
-  value = each.value.value
+  name = each.value.name
+  data = each.value.data
+  type = each.value.type
 }
 
 resource "cloudflare_record" "txt_records" {
