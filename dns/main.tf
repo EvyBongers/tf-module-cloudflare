@@ -3,7 +3,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 2.20"
+      version = ">= 2.20"
     }
   }
   experiments = [module_variable_optional_attrs]
@@ -58,9 +58,18 @@ resource "cloudflare_record" "sshfp_records" {
 
   zone_id = var.dns_zone_id
 
-  name = each.value.name
-  data = each.value.data
-  type = each.value.type
+  name  = each.value.name
+  type  = each.value.type
+  value = each.value.value
+  dynamic "data" {
+    for_each = each.value.value == null ? [1] : []
+
+    content {
+      algorithm   = each.value.data.algorithm
+      fingerprint = each.value.data.fingerprint
+      type        = each.value.data.type
+    }
+  }
 }
 
 resource "cloudflare_record" "txt_records" {
