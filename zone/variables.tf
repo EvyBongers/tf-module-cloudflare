@@ -34,6 +34,10 @@ variable "zone_settings" {
       js   = string,
       html = string,
     })),
+
+    dnssec = optional(object({
+      enabled = optional(bool),
+    }))
   })
   default = {}
 }

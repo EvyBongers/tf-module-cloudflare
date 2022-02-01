@@ -14,5 +14,7 @@ resource "cloudflare_zone" "dns_zone" {
 }
 
 resource "cloudflare_zone_dnssec" "dns_zone" {
+  count = var.zone_settings.dnssec.enabled ? 1 : 0
+
   zone_id = cloudflare_zone.dns_zone.id
 }
