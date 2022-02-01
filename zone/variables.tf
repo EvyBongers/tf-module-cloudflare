@@ -2,6 +2,11 @@ variable "dns_zone" {
   type = string
 }
 
+variable "dnssec_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "zone_settings" {
   type = object({
     development_mode = optional(string),
