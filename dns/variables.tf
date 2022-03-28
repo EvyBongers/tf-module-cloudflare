@@ -5,10 +5,15 @@ variable "dns_zone_id" {
 variable "dns_records" {
   type = list(object({
     name     = string
-    data     = optional(map(string))
     priority = optional(number)
     proxied  = optional(bool)
     type     = string
     value    = optional(string)
+
+    data = optional(object({
+      algorithm   = number
+      type        = number
+      fingerprint = string
+    }))
   }))
 }

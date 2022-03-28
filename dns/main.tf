@@ -66,8 +66,8 @@ resource "cloudflare_record" "sshfp_records" {
 
     content {
       algorithm   = each.value.data.algorithm
-      fingerprint = each.value.data.fingerprint
       type        = each.value.data.type
+      fingerprint = each.value.data.fingerprint
     }
   }
 }
