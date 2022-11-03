@@ -6,7 +6,7 @@ variable "dns_records" {
   type = list(object({
     name     = string
     priority = optional(number)
-    proxied  = optional(bool)
+    proxied  = optional(bool, false)
     type     = string
     value    = optional(string)
 

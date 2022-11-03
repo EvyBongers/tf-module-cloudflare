@@ -1,12 +1,11 @@
 terraform {
-  required_version = ">= 0.15.0"
+  required_version = ">= 1.3.0"
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = ">= 2.20"
     }
   }
-  experiments = [module_variable_optional_attrs]
 }
 
 resource "cloudflare_record" "a_records" {
