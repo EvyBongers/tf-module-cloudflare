@@ -9,7 +9,8 @@ terraform {
 }
 
 resource "cloudflare_zone" "dns_zone" {
-  zone = var.dns_zone
+  account_id = var.account_id
+  zone       = var.dns_zone
 }
 
 resource "cloudflare_zone_dnssec" "dns_zone" {
